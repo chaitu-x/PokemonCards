@@ -1,0 +1,303 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg, hsl(216, 33%, 97%) 0%, hsl(217, 35%, 83%) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+    /* <== Title ==> */
+
+h1{
+    color: hsl(0, 0%, 20%);
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+    /* <== Search section ==> */
+
+#search-container{
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+.search-bar{
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+#clear-btn {
+    position: absolute;
+    right: 15px;
+    font-size: 22px;
+    color: hsl(0, 0%, 60%);
+    cursor: pointer;
+    display: none; /* Hidden by default, shown via JS when typing */
+    user-select: none;
+    transition: color 0.2s;
+}
+#clear-btn:hover {
+    color: hsl(0, 0%, 20%);
+}
+
+    /* <== Search input section==> */
+
+.search-bar input[type="text"]{
+    flex: 1;
+    padding: 12px;
+    border: 2px solid hsl(0, 0%, 80%);
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+    padding-right: 40px;
+}
+.search-bar input[type="text"]:focus{
+    border-color: hsl(48, 100%, 51%);
+}
+
+    /* <== Buttons [search btn] ==> */
+
+button{
+    padding: 12px 20px;
+    background-color: hsl(233, 57%, 51%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.3s, transform 0.1s;
+}
+button:hover{
+    background-color: hsl(231, 56%, 38%);
+}
+button:active{
+    transform: scale(0.98);
+}
+
+        /* <== Pokémon Card Styling ==> */
+
+#card{
+    background: hsl(0, 0%, 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px hsla(0, 0%, 0%, 0.15);
+    width: 100%;
+    max-width: 380px;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+    /* <== Card Header section==> */
+
+#card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+#poke-id{
+    font-weight: bold;
+    color: hsl(0, 0%, 47%);
+    background: hsl(0, 0%, 93%);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+#poke-name{
+    font-size: 24px;
+    text-transform: capitalize;
+    color: hsl(0, 0%, 20%);
+}
+
+    /* <== Image Section ==> */
+
+#img-container{
+    background-color: hsl(0, 0%, 98%);
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px double hsl(48, 100%, 51%);
+}
+#poke-img{
+    max-width: 140px;
+    height: auto;
+}
+
+    /* <== Types Section==> */
+
+.types{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.type-badge{
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: hsl(0, 0%, 100%);
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px hsla(0, 0%, 0%, 0.3);
+}
+
+    /* <== Pokemon details section ==> */
+
+.details{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+    background: hsl(0, 0%, 99%);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid hsl(0, 0%, 93%);
+}
+.detail-item span{
+    display: block;
+}
+.detail-label{
+    font-size: 12px;
+    color: hsl(0, 0%, 53%);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+.detail-value{
+    font-size: 16px;
+    font-weight: 600;
+    color: hsl(0, 0%, 27%);
+}
+
+        /* <== Navigation & Evolution Buttons ==> */
+      
+.nav-buttons{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.nav-btn{
+    flex: 1;
+    background-color: hsl(48, 100%, 51%);
+    color: hsl(0, 0%, 20%);
+}
+.nav-btn:hover{
+    background-color: hsl(47, 97%, 46%);
+}
+
+    /* <== Evolution Section ==> */
+
+#evo-btn{
+    width: 100%;
+    background-color: hsl(0, 0%, 27%);
+}
+#evo-btn:hover{
+    background-color: hsl(0, 0%, 13%);
+}
+
+        /* <== Evolution Tree Modal ==>*/
+
+#evo-modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsla(0, 0%, 0%, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+#modal-content{
+    background: hsl(0, 0%, 100%);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+}
+#close-modal{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: hsl(0, 0%, 67%);
+}
+#close-modal:hover {
+    color: hsl(0, 0%, 20%);
+}
+#evo-chain-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 20px;
+}
+.evo-node{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.evo-node img{
+    width: 100px;
+    height: 100px;
+    background: hsl(0, 0%, 94%);
+    border-radius: 50%;
+    padding: 5px;
+}
+.evo-node p{
+    font-size: 12px;
+    text-transform: capitalize;
+    margin-top: 5px;
+    font-weight: 600;
+}
+.arrow{
+    font-size: 20px;
+    color: hsl(0, 0%, 53%);
+}
+
+        /* <== Type Colors ==> */
+
+.normal { background-color: hsl(59, 21%, 57%); }
+.fire { background-color: hsl(26, 85%, 56%); }
+.water { background-color: hsl(221, 82%, 66%); }
+.electric { background-color: hsl(48, 93%, 57%); }
+.grass { background-color: hsl(98, 52%, 54%); }
+.ice { background-color: hsl(177, 47%, 72%); }
+.fighting { background-color: hsl(2, 66%, 46%); }
+.poison { background-color: hsl(299, 45%, 44%); }
+.ground { background-color: hsl(43, 68%, 64%); }
+.flying { background-color: hsl(256, 81%, 76%); }
+.psychic { background-color: hsl(342, 93%, 65%); }
+.bug { background-color: hsl(67, 75%, 41%); }
+.rock { background-color: hsl(50, 54%, 46%); }
+.ghost { background-color: hsl(24, 23%, 36%); }
+.dragon { background-color: hsl(257, 97%, 60%); }
+.dark { background-color: hsl(24, 23%, 36%); }
+.steel { background-color: hsl(240, 19%, 76%); }
+.fairy { background-color: hsl(330, 50%, 68%); }

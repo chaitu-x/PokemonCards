@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex Card App</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <h1>Pokédex Card</h1>
+
+    <!-- Search Section -->
+
+    <div id="search-container">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Enter Pokémon name or ID...">
+            <span id="clear-btn">&times;</span>
+        </div>
+        <button id="search-btn">Search</button>
+    </div>
+
+    <!-- Card ID & Name-->
+
+    <div id="card">
+        <div id="card-header">
+            <span id="poke-id">#001</span>
+            <h2 id="poke-name">Loading...</h2>
+        </div>
+    
+        <!-- poke Imgcontainer & image-->
+
+        <div id="img-container">
+            <img src="" alt="Pokemon" id="poke-img">
+        </div>
+
+        <!-- Poke Types -->
+
+        <div class="types" id="poke-types">
+            </div>
+
+        <!-- Poke Details -->
+
+        <div class="details">
+            <div class="detail-item">
+                <span class="detail-label">Height</span>
+                <span class="detail-value" id="poke-height">...</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Weight</span>
+                <span class="detail-value" id="poke-weight">...</span>
+            </div>
+        </div>
+
+        <!-- Navigation buttons -->
+
+        <div class="nav-buttons">
+            <button class="nav-btn" id="prev-btn">◀ Prev</button>
+            <button class="nav-btn" id="next-btn">Next ▶</button>
+        </div>
+
+        <!-- Evolution Chart -->
+
+        <button id="evo-btn">View Evolution Tree</button>
+    </div>
+
+    <div id="evo-modal">
+        <div id="modal-content">
+            <span id="close-modal">&times;</span>
+            <h3>Evolution Tree</h3>
+            <div id="evo-chain-container">
+                </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
