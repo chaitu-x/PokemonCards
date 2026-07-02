@@ -5,8 +5,10 @@ let currentPokemonId = 1;
         const searchInput = document.getElementById('search-input');
         const clearBtn = document.getElementById('clear-btn');
         const searchBtn = document.getElementById('search-btn');
+        const card = document.getElementById('card');
         const pokeID = document.getElementById('poke-id');
         const pokeName = document.getElementById('poke-name');
+        const imgContainer = document.getElementById('img-container');
         const pokeImg = document.getElementById('poke-img');
         const typesContainer = document.getElementById('poke-types');
         const pokeHeight = document.getElementById('poke-height');
@@ -17,6 +19,8 @@ let currentPokemonId = 1;
         const evoContainer = document.getElementById('evo-chain-container');
         const modal = document.getElementById('evo-modal');
         const closeModal = document.getElementById('close-modal');
+        
+
         
         
         
@@ -65,8 +69,46 @@ let currentPokemonId = 1;
                 const badge = document.createElement('span');
                 badge.classList.add('type-badge', t.type.name);
                 badge.textContent = t.type.name;
+                // badge.style.border = "solid 2px black";
                 typesContainer.appendChild(badge);
             });
+
+            // Background color according to type color
+
+            const typeColors = {
+                normal : "hsl(59, 21%, 57%)",
+                fire : "hsl(26, 85%, 56%)",
+                water : "hsl(221, 82%, 66%)",
+                electric : "hsl(48, 93%, 57%)",
+                grass : "hsl(98, 52%, 54%)",
+                ice : "hsl(177, 47%, 72%)",
+                fighting : "hsl(2, 66%, 46%)",
+                poison : "hsl(299, 45%, 44%)",
+                ground : "hsl(43, 68%, 64%)",
+                flying : "hsl(256, 81%, 76%)",
+                psychic : "hsl(342, 93%, 65%)",
+                bug : "hsl(67, 75%, 41%)",
+                rock : "hsl(50, 54%, 46%)",
+                ghost : "hsl(266, 27%, 47%)",
+                dragon : "hsl(257, 97%, 60%)",
+                dark : "hsl(24, 23%, 36%)",
+                steel : "hsl(240, 19%, 76%)",
+                fairy : "hsl(330, 50%, 68%)"
+            };
+                // imgContainer.style.borderImage = 50%
+
+                const type1 = data.types[0].type.name;
+                const color1 = typeColors[type1];
+
+                if (data.types.length>1){
+                    const type2 = data.types[1].type.name;
+                    const color2 = typeColors[type2];
+
+                    document.body.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+                } else {
+                    document.body.style.background = `linear-gradient(135deg, ${color1}, hsl(0, 0%, 100%))`;
+                    
+                }
         }
 
         // Fetch Evolution Tree Data
