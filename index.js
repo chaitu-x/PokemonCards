@@ -45,7 +45,7 @@ let currentPokemonId = 1;
                 pokemonCache[key] = data;
                 pokemonCache[data.id] = data;
                 
-                currentPokemonId = data.id; // Update tracking ID
+                currentPokemonId = data.id; // Updating to track through ID
                 renderCard(data);
             } catch (error) {
                 alert('Pokémon not found! Please check the spelling or ID.');
@@ -69,7 +69,6 @@ let currentPokemonId = 1;
                 const badge = document.createElement('span');
                 badge.classList.add('type-badge', t.type.name);
                 badge.textContent = t.type.name;
-                // badge.style.border = "solid 2px black";
                 typesContainer.appendChild(badge);
             });
 
@@ -95,7 +94,7 @@ let currentPokemonId = 1;
                 steel : "hsl(240, 19%, 76%)",
                 fairy : "hsl(330, 50%, 68%)"
             };
-                // imgContainer.style.borderImage = 50%
+                
 
                 const type1 = data.types[0].type.name;
                 const color1 = typeColors[type1];
@@ -106,7 +105,7 @@ let currentPokemonId = 1;
 
                     document.body.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
                 } else {
-                    document.body.style.background = `linear-gradient(135deg, ${color1}, hsl(0, 0%, 100%))`;
+                    document.body.style.background = `linear-gradient(135deg, ${color1}, hsl(0, 0%, 70%))`;
                     
                 }
         }
@@ -114,16 +113,16 @@ let currentPokemonId = 1;
         // Fetch Evolution Tree Data
         async function fetchEvolutionTree() {
             try {
-                // Step 1: Fetch Pokémon species to find evolution chain URL
+                // Step 1: Fetching Pokémon species to find evolution chain URL
                 const speciesRes = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${currentPokemonId}/`);
                 const speciesData = await speciesRes.json();
                 
-                // Step 2: Fetch actual evolution chain
+                // Step 2: Fetching actual evolution chain
                 const evoRes = await fetch(speciesData.evolution_chain.url);
                 const evoData = await evoRes.json();
 
                 
-                evoContainer.innerHTML = ''; // Clear prior content
+                evoContainer.innerHTML = ''; // Clearing prior content
 
                 // Traverse the evolution data object
                 let currentEvo = evoData.chain;
